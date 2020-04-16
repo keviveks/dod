@@ -17,7 +17,7 @@ function DoDoApp() {
     {
       id: 2,
       task: 'Todo 2',
-      completed: false
+      completed: true
     },
     {
       id: 3,
