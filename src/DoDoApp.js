@@ -29,6 +29,14 @@ function DoDoApp() {
   const addTodo = task => {
     setTodos([...todos, { id: todos.length + 1, task: task, completed: false }]);
   };
+  const deleteTodo = id => {
+    const updatedTodo = todos.filter(todo => todo.id !== id);
+    setTodos(updatedTodo);
+  };
+  const toggleTodo = id => {
+    const updatedTodo = todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed } : todo);
+    setTodos(updatedTodo);
+  };
   return (
     <Paper
       style={{
@@ -46,7 +54,7 @@ function DoDoApp() {
       <Grid container justify="center" style={{ marginTop: '1rem' }}>
         <Grid item xs={11} md={8} lg={4}>
           <DoDoForm addTodo={addTodo} />
-          <DoDoList todos={todos} />
+          <DoDoList todos={todos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
         </Grid>
       </Grid>
     </Paper>
