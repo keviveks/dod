@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
+import DoDoForm from './DoDoForm';
 import DoDoList from './DoDoList';
 
 function DoDoApp() {
@@ -24,6 +25,10 @@ function DoDoApp() {
       completed: false
     },
   ];
+  const [todos, setTodos] = useState(initialToDo);
+  const addTodo = task => {
+    setTodos([...todos, { id: todos.length + 1, task: task, completed: false }]);
+  };
   return (
     <Paper
       style={{
@@ -38,7 +43,12 @@ function DoDoApp() {
           <Typography color="inherit">DoD - a ToDo App</Typography>
         </Toolbar>
       </AppBar>
-      <DoDoList todos={initialToDo} />
+      <Grid container justify="center" style={{ marginTop: '1rem' }}>
+        <Grid item xs={11} md={8} lg={4}>
+          <DoDoForm addTodo={addTodo} />
+          <DoDoList todos={todos} />
+        </Grid>
+      </Grid>
     </Paper>
   );
 }
