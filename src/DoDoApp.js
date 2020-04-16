@@ -37,6 +37,11 @@ function DoDoApp() {
     const updatedTodo = todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed } : todo);
     setTodos(updatedTodo);
   };
+  const editTodo = (id, task) => {
+    const updatedTodo = todos.map(todo => todo.id === id ? {...todo, task} : todo);
+    setTodos(updatedTodo);
+  };
+
   return (
     <Paper
       style={{
@@ -54,7 +59,7 @@ function DoDoApp() {
       <Grid container justify="center" style={{ marginTop: '1rem' }}>
         <Grid item xs={11} md={8} lg={4}>
           <DoDoForm addTodo={addTodo} />
-          <DoDoList todos={todos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
+          <DoDoList todos={todos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
         </Grid>
       </Grid>
     </Paper>
