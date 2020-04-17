@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import useLocalStorageState from './useLocalStorageState';
 
 export default initialTodos => {
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useLocalStorageState("todos", initialTodos);
 
   const addTodo = task => {
     setTodos([...todos, { id: todos.length + 1, task: task, completed: false }]);
