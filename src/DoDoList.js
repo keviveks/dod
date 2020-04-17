@@ -4,27 +4,27 @@ import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import DoDoItem from './DoDoItem';
 
-function DoDoList(props) {
-  return (
-    <Paper>
-      <List>
-        {props.todos.map(todo => (
-          <>
-            <DoDoItem
-              key={todo.id}
-              id={todo.id}
-              task={todo.task}
-              completed={todo.completed}
-              deleteTodo={props.deleteTodo}
-              toggleTodo={props.toggleTodo}
-              editTodo={props.editTodo}
-            />
-            <Divider />
-          </>
-        ))}
-      </List>
-    </Paper>
-  )
+function DoDoList({ todos, deleteTodo, toggleTodo, editTodo }) {
+  if (todos.length)
+    return (
+      <Paper>
+        <List>
+          {todos.map((todo, i) => (
+            <>
+              <DoDoItem
+                {...todo}
+                key={todo.id}
+                deleteTodo={deleteTodo}
+                toggleTodo={toggleTodo}
+                editTodo={editTodo}
+              />
+              { i < todos.length - 1 && <Divider /> }
+            </>
+          ))}
+        </List>
+      </Paper>
+    );
+  return null;
 };
 
 export default DoDoList;

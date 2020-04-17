@@ -12,8 +12,12 @@ function DoDoEdit({ id, task, editTodo, toggleIsEdit }) {
           resetValue();
           toggleIsEdit();
         }}
+        style={{
+          width: '80%',
+          marginLeft: '1rem'
+        }}
       >
-        <TextField value={value} onChange={updateValue} margin="normal" fullWidth />
+        <TextField value={value} onChange={updateValue} margin="normal" fullWidth autoFocus />
       </form>
   );
 }

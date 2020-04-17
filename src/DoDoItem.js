@@ -12,7 +12,7 @@ import DoDoEdit from './DoDoEdit';
 function DoDoItem({ id, task, completed, deleteTodo, toggleTodo, editTodo }) {
   const [isEdit, toggleIsEdit] = useToggleState(false);
   return (
-    <ListItem>
+    <ListItem style={{ height: '64px' }}>
       {isEdit ? <DoDoEdit id={id} task={task} editTodo={editTodo} toggleIsEdit={toggleIsEdit} /> :
         <>
           <Checkbox checked={completed} onClick={() => toggleTodo(id) } />
