@@ -1,10 +1,18 @@
 import React from 'react';
 // import DoDoApp from './DoDoApp';
 import Navbar from './Navbar';
+import Form from './Form';
+import PageContent from './PageContent';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
-    <Navbar />
+    <ThemeProvider>
+      <PageContent>
+        <Navbar />
+        <Form />
+      </PageContent>
+    </ThemeProvider>
   );
 }
 
