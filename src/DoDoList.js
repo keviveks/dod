@@ -6,7 +6,8 @@ import DoDoItem from './DoDoItem';
 import { TodosContext } from './contexts/TodosContext';
 
 function DoDoList() {
-  const { todos } = useContext(TodosContext);
+  const todos = useContext(TodosContext);
+  console.log('LIST RENDER!!!');
   if (todos.length)
     return (
       <Paper>
