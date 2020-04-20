@@ -19,3 +19,13 @@ export default function App() {
     <DoDoApp />
   );
 }
+
+
+// (accumulatedValue, nextItem) => nextAccumulatedValue
+// takes two values and "reduces" them down to one value
+
+// In our case, the two values provided to a reducer are:
+  // - the current state
+  // - an action that (may) update the state
+
+// (state, action) => nextState

@@ -11,16 +11,16 @@ import DoDoEdit from './DoDoEdit';
 import { TodosContext } from './contexts/TodosContext';
 
 function DoDoItem({ id, task, completed }) {
-  const { toggleTodo, deleteTodo } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
   const [isEdit, toggleIsEdit] = useToggleState(false);
   return (
     <ListItem style={{ height: '64px' }}>
       {isEdit ? <DoDoEdit id={id} task={task} toggleIsEdit={toggleIsEdit} /> :
         <>
-          <Checkbox checked={completed} onClick={() => toggleTodo(id) } />
+          <Checkbox checked={completed} onClick={() => dispatch({ type: 'TOGGLE', id }) } />
           <ListItemText style={{ textDecoration: completed ? "line-through" : "none" }}>{task}</ListItemText>
           <ListItemSecondaryAction>
-            <IconButton aria-label="Delete" onClick={() => deleteTodo(id)}>
+            <IconButton aria-label="Delete" onClick={() => dispatch({ type: 'DELETE', id })}>
               <DeleteIcon />
             </IconButton>
             <IconButton aria-label="Edit" onClick={toggleIsEdit}>
